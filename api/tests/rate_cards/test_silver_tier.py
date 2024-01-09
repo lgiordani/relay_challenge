@@ -344,7 +344,7 @@ def test_silver_tier_quality_bonus():
 
     activity_log.append(
         {
-            "route_id": f"BBBB",
+            "route_id": "BBBB",
             "attempt_date_time": "2023-12-18T08:00:18.588934+00:00",
             "success": False,
         }

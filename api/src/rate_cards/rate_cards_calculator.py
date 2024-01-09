@@ -1,7 +1,7 @@
 from .rate_cards_calculator_bronze_tier import BronzeTier
-from .rate_cards_calculator_silver_tier import SilverTier
 from .rate_cards_calculator_gold_tier import GoldTier
 from .rate_cards_calculator_platinum_tier import PlatinumTier
+from .rate_cards_calculator_silver_tier import SilverTier
 
 
 class WrongTierName(ValueError):

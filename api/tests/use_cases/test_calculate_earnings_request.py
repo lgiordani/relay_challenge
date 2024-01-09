@@ -40,7 +40,7 @@ def test_calculate_earnings_request_wrong_tier(mock_rcc, test_activity_log):
     assert request.parameters == {"tier": "bronze", "activity_log": test_activity_log}
     assert request.error == {
         "parameter": "tier",
-        "message": f"Invalid tier code: bronze",
+        "message": "Invalid tier code: bronze",
         "error_code": error_codes.INVALID_TIER,
     }
 

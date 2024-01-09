@@ -1,8 +1,7 @@
 from http import HTTPStatus
-from unittest.mock import Mock, patch
+from unittest.mock import patch
 
 from src.responses.response import ResponseFailure, ResponseSuccess
-
 from src.use_cases import error_codes
 
 

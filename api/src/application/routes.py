@@ -1,12 +1,10 @@
 from http import HTTPStatus
 
-from flask import Blueprint, current_app, jsonify, request
+from flask import Blueprint, jsonify, request
 
 from src.application.auth import require_api_key
-
 from src.application.response import abort_json
 from src.use_cases import error_codes
-
 from src.use_cases.calculate_earnings import (
     build_calculate_earnings_request,
     calculate_earnings_use_case,

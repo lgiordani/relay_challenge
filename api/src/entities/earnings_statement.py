@@ -1,6 +1,5 @@
 import math
-
-from typing import Optional, List
+from typing import List
 
 from .types import LineItemType
 

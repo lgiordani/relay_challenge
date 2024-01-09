@@ -1,9 +1,10 @@
-from dateutil.parser import isoparse
-from typing import List
 from collections import Counter
+from typing import List
 
-from src.entities.types import LineItemType
+from dateutil.parser import isoparse
+
 from src.entities.earnings_statement import EarningsStatement
+from src.entities.types import LineItemType
 
 
 class Tier:

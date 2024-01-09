@@ -1,19 +1,12 @@
-from datetime import datetime
-from dateutil.parser import isoparse, ParserError
+from typing import List, Optional, Union
 
-from typing import List, Union, Optional
+from dateutil.parser import ParserError, isoparse
+
 from src.entities.types import ActivityLogType
-
-from src.requests.request import InvalidRequest, Request, ValidRequest
-from src.responses.response import (
-    ResponseFailure,
-    ResponseSuccess,
-    build_response_from_invalid_request,
-)
-
-from src.use_cases import error_codes
-
 from src.rate_cards.rate_cards_calculator import RateCardsCalculator
+from src.requests.request import InvalidRequest, Request, ValidRequest
+from src.responses.response import ResponseFailure, ResponseSuccess
+from src.use_cases import error_codes
 
 
 def build_calculate_earnings_request(
