@@ -2,6 +2,7 @@ from .rate_cards_calculator_tier import Tier
 
 
 class BronzeTier(Tier):
+    hourly_minimum = 14.50
     successful_rate = 0.459
     unsuccessful_rate = 0.229
 

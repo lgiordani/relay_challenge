@@ -40,6 +40,13 @@ class EarningsStatement:
 
         for key in self_line_items.keys():
             if not math.isclose(
+                self_line_items[key]["rate"],
+                other_line_items[key]["rate"],
+                abs_tol=self.diff_tolerance,
+            ):
+                return False
+
+            if not math.isclose(
                 self_line_items[key]["total"],
                 other_line_items[key]["total"],
                 abs_tol=self.diff_tolerance,

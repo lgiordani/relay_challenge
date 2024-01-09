@@ -8,10 +8,15 @@ from src.entities.earnings_statement import EarningsStatement
 class Tier:
     successful_rate: float = 0
     unsuccessful_rate: float = 0
+    hourly_minimum: float = 0
 
     def __init__(self, activity_log):
         self.activity_log = activity_log
         self.routes = Counter([i["route_id"] for i in activity_log])
+
+        successes = Counter([i["success"] for i in self.activity_log])
+        self.successful_attempts = successes[True]
+        self.unsuccessful_attempts = successes[False]
 
     def _process_functions(self):
         return [self._process_successful_attempts, self._process_unsuccessful_attempts]
@@ -25,25 +30,19 @@ class Tier:
         return line_items
 
     def _process_successful_attempts(self):
-        successful_attempts = len(
-            [i for i in self.activity_log if i["success"] is True]
-        )
-        successful_total = successful_attempts * self.successful_rate
+        successful_total = self.successful_attempts * self.successful_rate
         return {
             "name": "Per successful attempt",
-            "quantity": successful_attempts,
+            "quantity": self.successful_attempts,
             "rate": self.successful_rate,
             "total": successful_total,
         }
 
     def _process_unsuccessful_attempts(self):
-        unsuccessful_attempts = len(
-            [i for i in self.activity_log if i["success"] is False]
-        )
-        unsuccessful_total = unsuccessful_attempts * self.unsuccessful_rate
+        unsuccessful_total = self.unsuccessful_attempts * self.unsuccessful_rate
         return {
             "name": "Per unsuccessful attempt",
-            "quantity": unsuccessful_attempts,
+            "quantity": self.unsuccessful_attempts,
             "rate": self.unsuccessful_rate,
             "total": unsuccessful_total,
         }
@@ -65,7 +64,7 @@ class Tier:
         line_items_subtotal = sum(i["total"] for i in line_items)
 
         hours_worked = sum(route_hours)
-        minimum_earnings = 14.50 * hours_worked
+        minimum_earnings = self.hourly_minimum * hours_worked
 
         final_earnings = max(minimum_earnings, line_items_subtotal)
 

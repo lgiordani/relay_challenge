@@ -1,4 +1,6 @@
 from .rate_cards_calculator_bronze_tier import BronzeTier
+from .rate_cards_calculator_silver_tier import SilverTier
+from .rate_cards_calculator_gold_tier import GoldTier
 
 
 class WrongTierName(ValueError):
@@ -6,7 +8,11 @@ class WrongTierName(ValueError):
 
 
 class RateCardsCalculator:
-    tiers = {"bronze": BronzeTier}
+    tiers = {
+        "bronze": BronzeTier,
+        "silver": SilverTier,
+        "gold": GoldTier,
+    }
 
     def __init__(self, tier):
         try:
