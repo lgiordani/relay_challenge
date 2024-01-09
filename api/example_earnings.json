@@ -1,0 +1,38 @@
+{
+    "line_items": [
+        {
+            "name": "Per successful attempt",
+            "quantity": 5,
+            "rate": 0.667,
+            "total": 3.335
+        },
+        {
+            "name": "Per unsuccessfuly attempt",
+            "quantity": 1,
+            "rate": 0.155,
+            "total": 0.155
+        },
+        {
+            "name": "Long route bonus",
+            "quantity": 0,
+            "rate": 12.0,
+            "total": 0.0
+        },
+        {
+            "name": "Loyalty bonus (attempts)",
+            "quantity": 0,
+            "rate": 18.0,
+            "total": 0.0
+        },
+        {
+            "name": "Consistency bonus",
+            "quantity": 0,
+            "rate": 34.5,
+            "total": 0.0
+        }
+    ],
+    "line_items_subtotal": 3.4899999999999998,
+    "hours_worked": 0.2110577227777778,
+    "minimum_earnings": 3.218630272361111,
+    "final_earnings": 3.4899999999999998
+}

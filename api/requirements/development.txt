@@ -1,0 +1,11 @@
+-r testing.txt
+
+black
+docker-compose
+flake8
+flake8-pyproject
+isort
+mypy
+types-python-dateutil
+types-pytz
+types-flask

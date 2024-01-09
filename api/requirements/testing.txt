@@ -1,0 +1,10 @@
+-r live.txt
+
+coverage
+freezegun
+moto
+pytest
+pytest-cov
+pytest-freezegun
+pytest-icdiff
+pytest-mypy

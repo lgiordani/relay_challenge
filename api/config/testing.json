@@ -1,0 +1,18 @@
+[
+  {
+    "name": "RELAY_API_PORT",
+    "value": "5050"
+  },
+  {
+    "name": "RELAY_API_CONFIG",
+    "value": "testing"
+  },
+  {
+    "name": "RELAY_API_DATASTORE_TYPE",
+    "value": "MEMORY"
+  },
+  {
+    "name": "RELAY_API_VAULT_TYPE",
+    "value": "MEMORY"
+  }
+]

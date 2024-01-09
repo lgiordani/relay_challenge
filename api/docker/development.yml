@@ -1,0 +1,18 @@
+version: '3.4'
+
+services:
+  app:
+    build:
+      context: ${PWD}
+      dockerfile: docker/Dockerfile.development
+    environment:
+      RELAY_API_CONFIG: ${RELAY_API_CONFIG}
+      RELAY_API_DEVELOPMENT_KEY: ${RELAY_API_DEVELOPMENT_KEY}
+      RELAY_API_DATASTORE_TYPE: ${RELAY_API_DATASTORE_TYPE}
+      RELAY_API_VAULT_TYPE: ${RELAY_API_VAULT_TYPE}
+    command: flask run --host 0.0.0.0 --port 5000
+    volumes:
+      - ${PWD}:/usr/src/app
+    ports:
+      - "${RELAY_API_PORT}:5000"
+

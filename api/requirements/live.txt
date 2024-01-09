@@ -1,0 +1,7 @@
+Flask
+boto3
+email-validator
+pyotp
+python-dateutil
+pytz
+sentry-sdk[flask]

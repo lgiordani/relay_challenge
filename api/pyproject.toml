@@ -1,0 +1,60 @@
+[tool.mypy]
+check_untyped_defs = true
+no_implicit_optional = true
+
+[[tool.mypy.overrides]]
+module="flask.*"
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module="boto3.*"
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module="moto.*"
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module="dateutil.*"
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module="pytz.*"
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module="email_validator.*"
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module="requests.*"
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module="pytest.*"
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module="werkzeug.*"
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module="botocore.*"
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module="pyotp.*"
+ignore_missing_imports = true
+
+[tool.isort]
+profile = "black"
+
+[tool.flake8]
+ignore = ["E231", "E501", "D103", "W503"]
+max-line-length = 88
+
+[tool.pytest.ini_options]
+markers = [
+    "e2e: end to end tests that require a running server",
+    "unit: unit tests"
+]
