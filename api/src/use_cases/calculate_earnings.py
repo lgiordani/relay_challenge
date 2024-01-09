@@ -1,7 +1,7 @@
 from datetime import datetime
 from dateutil.parser import isoparse, ParserError
 
-from typing import List
+from typing import List, Union, Optional
 from src.entities.types import ActivityLogType
 
 from src.requests.request import InvalidRequest, Request, ValidRequest
@@ -13,11 +13,38 @@ from src.responses.response import (
 
 from src.use_cases import error_codes
 
+from src.rate_cards.rate_cards_calculator import RateCardsCalculator
+
 
 def build_calculate_earnings_request(
-    activity_log: List[ActivityLogType],
+    tier: Optional[str] = None,
+    activity_log: Optional[List[ActivityLogType]] = None,
 ) -> Request:
-    parameters = {"activity_log": activity_log}
+    parameters = {"tier": tier, "activity_log": activity_log}
+
+    if tier is None:
+        return InvalidRequest(
+            parameter="tier",
+            error_code=error_codes.MISSING_PARAMETERS,
+            message="Missing",
+            request_parameters=parameters,
+        )
+
+    if activity_log is None:
+        return InvalidRequest(
+            parameter="activity_log",
+            error_code=error_codes.MISSING_PARAMETERS,
+            message="Missing",
+            request_parameters=parameters,
+        )
+
+    if tier not in RateCardsCalculator.tiers.keys():
+        return InvalidRequest(
+            parameter="tier",
+            error_code=error_codes.INVALID_TIER,
+            message=f"Invalid tier code: {tier}",
+            request_parameters=parameters,
+        )
 
     for activity in activity_log:
         if set(activity.keys()) != set(["route_id", "attempt_date_time", "success"]):
@@ -41,34 +68,16 @@ def build_calculate_earnings_request(
     return ValidRequest(parameters)
 
 
-# def calculate_earnings_use_case(
-#     datastore: Datastore, request: Request, email_validator=None
-# ) -> Union[ResponseSuccess, ResponseFailure]:
-#     if not request:
-#         return build_response_from_invalid_request(request)
+def calculate_earnings_use_case(
+    request: Request,
+) -> Union[ResponseSuccess, ResponseFailure]:
+    tier = request.parameters["tier"]
+    activity_log = request.parameters["activity_log"]
 
-#     user_id = request.parameters["user_id"]
-#     user_id = user_id or generate_uuid()
+    try:
+        rcc = RateCardsCalculator(tier)
+        earnings = rcc.process(activity_log)
 
-#     otp_secret = request.parameters["otp_secret"]
-#     password = request.parameters["password"]
-
-#     try:
-#         email = email_formatter(request.parameters["email"], validator=email_validator)
-#     except ValueError as exc:
-#         return ResponseFailure(error_codes.INVALID_CREDENTIALS, exc)
-
-#     try:
-#         user = datastore.calculate_earnings(
-#             user_id,
-#             email=email,
-#             password=password,
-#             otp_secret=otp_secret,
-#         )
-
-#         return ResponseSuccess(user.user_id)
-
-#     except UserAlreadyExists as exc:
-#         return ResponseFailure(error_codes.USER_ALREADY_EXISTS, exc)
-#     except Exception as exc:
-#         return ResponseFailure(error_codes.UNKNOWN_ERROR, exc)
+        return ResponseSuccess(earnings.asdict())
+    except Exception as exc:  # pylint: disable=broad-exception-caught
+        return ResponseFailure(error_codes.UNKNOWN_ERROR, exc)

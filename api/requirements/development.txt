@@ -1,7 +1,6 @@
 -r testing.txt
 
 black
-docker-compose
 flake8
 flake8-pyproject
 isort

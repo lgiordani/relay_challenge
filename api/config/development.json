@@ -8,15 +8,11 @@
     "value": "development"
   },
   {
-    "name": "RELAY_API_DEVELOPMENT_KEY",
+    "name": "RELAY_API_KEY",
     "value": "developmentkey"
   },
   {
-    "name": "RELAY_API_DATASTORE_TYPE",
-    "value": "MEMORY"
-  },
-  {
-    "name": "RELAY_API_VAULT_TYPE",
+    "name": "RELAY_API_KEYS_VAULT_TYPE",
     "value": "MEMORY"
   }
 ]

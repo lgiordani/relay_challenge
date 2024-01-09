@@ -8,11 +8,7 @@
     "value": "testing"
   },
   {
-    "name": "RELAY_API_DATASTORE_TYPE",
-    "value": "MEMORY"
-  },
-  {
-    "name": "RELAY_API_VAULT_TYPE",
+    "name": "RELAY_API_KEYS_VAULT_TYPE",
     "value": "MEMORY"
   }
 ]

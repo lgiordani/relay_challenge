@@ -1,3 +1,4 @@
+from dateutil.parser import isoparse
 from typing import List
 from collections import Counter
 
@@ -12,6 +13,11 @@ class Tier:
 
     def __init__(self, activity_log):
         self.activity_log = activity_log
+
+        # Convert date strings into datetime objects
+        for i in self.activity_log:
+            i["attempt_date_time"] = isoparse(i["attempt_date_time"])
+
         self.routes = Counter([i["route_id"] for i in activity_log])
 
         successes = Counter([i["success"] for i in self.activity_log])

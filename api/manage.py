@@ -70,7 +70,8 @@ def docker_compose_cmdline(config):
         raise ValueError(f"The file {docker_compose_file} does not exist")
 
     return [
-        "docker-compose",
+        "docker",
+        "compose",
         "-p",
         config,
         "-f",

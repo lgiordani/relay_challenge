@@ -1,11 +1,7 @@
 import random
 import string
 
-# from datetime import datetime
-
 import pytest
-
-# from src.entities.earnings_statement import EarningsStatement
 
 
 def pytest_addoption(parser):
@@ -48,37 +44,3 @@ def test_activity_log():
             "success": True,
         }
     ]
-
-
-# @pytest.fixture(scope="function")
-# def test_web_user(test_user):
-#     return {
-#         "uuid": test_user["user_id"],
-#         "email": test_user["email"],
-#         "password": test_user["password"],
-#         "otp_secret": test_user["otp_secret"],
-#     }
-
-
-# @pytest.fixture(scope="function")
-# def user_entity(test_user):
-#     return User(
-#         test_user["user_id"],
-#         email=test_user["email"],
-#         password="hashed-password",
-#         password_timestamp=datetime.utcnow().isoformat(),
-#         otp_secret=None,
-#         otp_enabled=False,
-#     )
-
-
-# @pytest.fixture(scope="function")
-# def another_user_entity(test_user):
-#     return User(
-#         "another-user-id",
-#         email="anotheruser@email.com",
-#         password="another-password",
-#         password_timestamp=datetime.utcnow().isoformat(),
-#         otp_secret=None,
-#         otp_enabled=False,
-#     )

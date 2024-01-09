@@ -1,16 +1,12 @@
-from datetime import datetime
-
 from src.entities.earnings_statement import EarningsStatement
-from src.rate_cards.rate_cards_calculator import RateCardsCalculator, WrongTierName
+from src.rate_cards.rate_cards_calculator import RateCardsCalculator
 
 
 def test_gold_tier_single_successful_attempt():
     activity_log = [
         {
             "route_id": "RT5QHQ6M3A937H",
-            "attempt_date_time": datetime.fromisoformat(
-                "2023-12-18T08:33:18.588934+00:00"
-            ),
+            "attempt_date_time": "2023-12-18T08:33:18.588934+00:00",
             "success": True,
         }
     ]
@@ -53,16 +49,12 @@ def test_gold_tier_multiple_successful_attempts():
     activity_log = [
         {
             "route_id": "AAAA",
-            "attempt_date_time": datetime.fromisoformat(
-                "2023-12-18T08:33:18.588934+00:00"
-            ),
+            "attempt_date_time": "2023-12-18T08:33:18.588934+00:00",
             "success": True,
         },
         {
             "route_id": "AAAA",
-            "attempt_date_time": datetime.fromisoformat(
-                "2023-12-18T08:35:18.588934+00:00"
-            ),
+            "attempt_date_time": "2023-12-18T08:35:18.588934+00:00",
             "success": True,
         },
     ]
@@ -105,9 +97,7 @@ def test_gold_tier_single_unsuccessful_attempt():
     activity_log = [
         {
             "route_id": "AAAA",
-            "attempt_date_time": datetime.fromisoformat(
-                "2023-12-18T08:33:18.588934+00:00"
-            ),
+            "attempt_date_time": "2023-12-18T08:33:18.588934+00:00",
             "success": False,
         }
     ]
@@ -150,16 +140,12 @@ def test_gold_tier_multiple_unsuccessful_attempts():
     activity_log = [
         {
             "route_id": "AAAA",
-            "attempt_date_time": datetime.fromisoformat(
-                "2023-12-18T08:33:18.588934+00:00"
-            ),
+            "attempt_date_time": "2023-12-18T08:33:18.588934+00:00",
             "success": False,
         },
         {
             "route_id": "AAAA",
-            "attempt_date_time": datetime.fromisoformat(
-                "2023-12-18T08:35:18.588934+00:00"
-            ),
+            "attempt_date_time": "2023-12-18T08:35:18.588934+00:00",
             "success": False,
         },
     ]
@@ -202,30 +188,22 @@ def test_gold_tier_multiple_routes():
     activity_log = [
         {
             "route_id": "AAAA",
-            "attempt_date_time": datetime.fromisoformat(
-                "2023-12-18T08:33:18.588934+00:00"
-            ),
+            "attempt_date_time": "2023-12-18T08:33:18.588934+00:00",
             "success": True,
         },
         {
             "route_id": "AAAA",
-            "attempt_date_time": datetime.fromisoformat(
-                "2023-12-18T08:35:18.588934+00:00"
-            ),
+            "attempt_date_time": "2023-12-18T08:35:18.588934+00:00",
             "success": False,
         },
         {
             "route_id": "BBBB",
-            "attempt_date_time": datetime.fromisoformat(
-                "2023-12-18T08:33:18.588934+00:00"
-            ),
+            "attempt_date_time": "2023-12-18T08:33:18.588934+00:00",
             "success": True,
         },
         {
             "route_id": "BBBB",
-            "attempt_date_time": datetime.fromisoformat(
-                "2023-12-18T08:35:18.588934+00:00"
-            ),
+            "attempt_date_time": "2023-12-18T08:35:18.588934+00:00",
             "success": False,
         },
     ]
@@ -268,16 +246,12 @@ def test_gold_tier_consistency_bonus():
     activity_log = [
         {
             "route_id": "AAAA",
-            "attempt_date_time": datetime.fromisoformat(
-                "2023-12-18T08:00:18.588934+00:00"
-            ),
+            "attempt_date_time": "2023-12-18T08:00:18.588934+00:00",
             "success": True,
         },
         {
             "route_id": "BBBB",
-            "attempt_date_time": datetime.fromisoformat(
-                "2023-12-18T08:00:18.588934+00:00"
-            ),
+            "attempt_date_time": "2023-12-18T08:00:18.588934+00:00",
             "success": True,
         },
     ]

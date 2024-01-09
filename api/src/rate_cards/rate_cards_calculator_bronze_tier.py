@@ -8,11 +8,11 @@ class BronzeTier(Tier):
 
     def _process_functions(self):
         functions = super()._process_functions()
-        functions.extend([self._process_long_rate_bonus, self._process_loyalty_bonus])
+        functions.extend([self._process_long_route_bonus, self._process_loyalty_bonus])
 
         return functions
 
-    def _process_long_rate_bonus(self):
+    def _process_long_route_bonus(self):
         long_route_bonus = any(i > 30 for i in self.routes.values())
         long_route_bonus_quantity = 1 if long_route_bonus else 0
         long_route_bonus_rate = 10.0
